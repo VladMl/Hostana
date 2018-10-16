@@ -6,8 +6,6 @@ define(["controllers/dashboardController"],
             view: "datatable",
             id: "datatable_dashboard",
             css: "datatable",
-            autoConfig: true,
-            autoWidth: true,
             rowHeight: 30,
             scheme: {
                 $change: function(item) {
@@ -15,7 +13,11 @@ define(["controllers/dashboardController"],
                         item.$css = "webix_cell_group";
                 }
             },
-            columns: [{
+            columns: [
+                {   id: "id",
+                    hidden: "true"
+                },
+                {
                     id: "hostName",
                     header: "Hostname",
                     adjust: "data"
@@ -37,22 +39,34 @@ define(["controllers/dashboardController"],
                 },
                 {
                     id: "software",
-                    header: "Software",
-                    minWidth: webix.html.getTextSize("Software", "webix_table_cell webix_cell").width + 10,
-                    fillspace: true
+                    hidden: "true"
                 },
                 {
-                    id: "label",
+                    id: "softwareView",
+                    header: "Software",
+                    fillspace: true,
+                    minWidth: webix.html.getTextSize("Software", "webix_table_cell webix_cell").width + 10
+                },
+                {   id: "label",
+                    hidden: "true"
+                },
+                {
+                    id: "labelView",
                     header: "Label",
-                    adjust: "true"
+                    adjust: "true",
+                    editor: "combo"
                 },
                 {
                     id: "description",
                     header: "Description",
-                    adjust: "true"
+                    adjust: "true",
+                    editor: "popup"
+                },
+                {   id: "gui",
+                    hidden: "true"
                 },
                 {
-                    id: "gui",
+                    id: "guiView",
                     header: "GUI",
                     adjust: "true"
                 },
@@ -72,13 +86,17 @@ define(["controllers/dashboardController"],
                 }
 
 
-            ]
+            ],
+            onMouseMove:{}
+
+
         };
 
         return {
             $ui: ui,
             $oninit: function(view) {
                 webix.extend($$("datatable_dashboard"), webix.ProgressBar);
+                dashboardController.init();
                 dashboardController.refreshDashboardTable();
 
             }

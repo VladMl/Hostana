@@ -36,6 +36,10 @@ public class HostDto {
 
     private String category;
 
+    private String softwareView;
+
+    private String guiView;
+
     public Long getId() {
         return id;
     }
@@ -158,6 +162,22 @@ public class HostDto {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public String getSoftwareView() {
+        return softwareView;
+    }
+
+    public void setSoftwareView(String softwareView) {
+        this.softwareView = softwareView;
+    }
+
+    public String getGuiView() {
+        return guiView;
+    }
+
+    public void setGuiView(String guiView) {
+        this.guiView = guiView;
     }
 
 }

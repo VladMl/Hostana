@@ -108,6 +108,7 @@ public class HostController {
     }
 
 
+
     @PutMapping("/host/{id}")
     public ResponseEntity hostUpdate(@PathVariable("id") long id, @RequestParam Map<String, String> body) {
         Host host = hostRepository.findById(id)

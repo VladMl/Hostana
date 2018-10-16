@@ -1,10 +1,8 @@
 package com.vladml.hostana.host;
 
 import com.vladml.hostana.labels.Label;
-import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.HashMap;
 
 @Entity
@@ -50,7 +48,7 @@ public class Host implements Cloneable {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "label_id", nullable = false)
-    public Label label;
+    private Label label;
 
 
     public Long getId() {
@@ -183,7 +181,6 @@ public class Host implements Cloneable {
         return fieldMap;
     }
 
-
     public String getCategory() {
         return category;
     }
@@ -192,8 +189,10 @@ public class Host implements Cloneable {
         this.category = category;
     }
 
+
     public Host() {
     }
+
 
     public Host(String hostName, String groupName, String clusterName) {
         this.hostName = hostName;

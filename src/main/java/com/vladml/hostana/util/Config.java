@@ -92,6 +92,7 @@ public class Config {
 
 
     public void load() {
+
         Yaml yaml = new Yaml();
 
         InputStream input = null;

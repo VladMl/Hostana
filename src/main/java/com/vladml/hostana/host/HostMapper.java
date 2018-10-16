@@ -78,8 +78,12 @@ public class HostMapper extends ModelMapper {
 
         HostDto hostDto = (HostDto) super.map(tmpSource, destinationType);
 
-        hostDto.setGui(this.getGui(((Host) tmpSource).getGui()));
-        hostDto.setSoftware(this.getSoftware(((Host) tmpSource).getSoftware(), ((Host) tmpSource).getSoftwareJson()));
+        //hostDto.setGui(this.getGui(((Host) tmpSource).getGui()));
+        //hostDto.setSoftware(this.getSoftware(((Host) tmpSource).getSoftware(), ((Host) tmpSource).getSoftwareJson()));
+
+        hostDto.setGuiView(this.getGui(((Host) tmpSource).getGui()));
+        hostDto.setSoftwareView(this.getSoftware(((Host) tmpSource).getSoftware(), ((Host) tmpSource).getSoftwareJson()));
+
         hostDto.setUpdateStatus(this.getUpdateStatus(((Host) tmpSource).getUpdateStatus(), ((Host) tmpSource).getUpdateLogUrl()));
 
         return (D) hostDto;

@@ -1,4 +1,5 @@
-define(function() {
+define([],
+           function() {
 
     return {
         $ui: {
@@ -32,15 +33,19 @@ define(function() {
                     },
                     {
 
-                        view: "richselect",
+                        view: "combo",
                         name: "label",
                         label: "Label",
                         id: "label",
-                        value: 1,
+                      //  value: 1,
                         options: {
                             body: {
                                 template: "#name#",
                                 url: "api/labels",
+                                ready(){
+                                            let emptyOption = { id:"", name:"", $empty: true };
+                                            this.add(emptyOption,0);
+                                          }
                             }
                         }
                     },
@@ -86,9 +91,14 @@ define(function() {
                                 align: "center",
                                 width: 120,
                                 click: function() {
+
                                     webix.ajax().put("/api/host/" + $$("window-host").recordId, $$('form-host').getValues()).then(function(data) {
-                                        $$("datatable_hosts").load($$("datatable_hosts").config.url);
-                                        $$("window-host").close();
+                                       if ($$("datatable_hosts") != null)
+                                            $$("datatable_hosts").load($$("datatable_hosts").config.url);
+                                       if ($$("datatable_dashboard") != null)
+                                            Window.refreshDashboardTable();
+
+                                       $$("window-host").close();
                                     }).fail(function(err) {
                                         alert(err);
                                     });

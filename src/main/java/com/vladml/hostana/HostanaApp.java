@@ -23,6 +23,7 @@ public class HostanaApp implements CommandLineRunner {
 	private Config myConfig;
 
 	public static void main(String[] args) {
+		System.out.println("Current Directory = " + System.getProperty("user.dir"));
 		ConfigurableApplicationContext ctx = SpringApplication.run(HostanaApp.class, args);
 	}
 

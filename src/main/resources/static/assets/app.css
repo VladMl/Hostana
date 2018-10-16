@@ -738,3 +738,10 @@ webix_measure_sizeimg{
  .webix_cell {
      font-size: 13px;
 }
+
+
+.hover {
+  text-decoration: underline;
+  color: #3498db;
+  cursor: pointer;
+}
