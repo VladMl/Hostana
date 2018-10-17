@@ -3,9 +3,11 @@
 */
 
 define([
-	"libs/webix-mvc-core/core"
+	"libs/webix-mvc-core/core",
+	"libs/webix-mvc-core/plugins/menu"
+
 ], function(
-	core
+	core, menu
 ){
 
 	//configuration
@@ -17,6 +19,7 @@ define([
 		start:		"/app/dashboard"
 	});
 
+	app.use(menu);
 
 
 
