@@ -70,7 +70,8 @@ define(["views/dashboard", "views/forms/host"], function(dashboard, hostform) {
 
                 var onClick = $$("datatable_dashboard").attachEvent("onItemClick", function(id, e, node) {
 
-                var item = this.getItem(id);
+                    if (id.column != "hostName")  return;
+                    var item = this.getItem(id);
 
                     var win = this.$scope.ui(hostform.$ui);
                     $$("form-host").bind("datatable_dashboard");
