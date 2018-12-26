@@ -8,8 +8,8 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import com.vladml.hostana.HostanaApp;
-import com.vladml.hostana.host.Host;
-import com.vladml.hostana.host.HostRepository;
+import com.vladml.hostana.model.Host;
+import com.vladml.hostana.repository.HostRepository;
 import com.vladml.hostana.util.ansible.AnsibleIniReader;
 import com.vladml.hostana.util.ansible.AnsibleInventoryManager;
 import com.vladml.hostana.util.inventory.HostInventory;
@@ -53,13 +53,14 @@ public class Config {
     }
 
     private void loadInventoryFile(String path) {
+        /*
         LinkedHashMap inventory = inventoryManager.load(path);
         inventory.forEach((groupName, hosts)->{
             ArrayList<HostInventory> hostList = (ArrayList<HostInventory>) hosts;
             hostList.forEach((host)->{
                 Host hostDB = hostRepository.findByHostName(host.getHostname());
                 if (hostDB == null)
-                    hostDB = new Host();
+                    hostDB = Host.builder().build();
 
                 hostDB.setHostName(host.getHostname());
                 hostDB.setGroupName((String) groupName);
@@ -69,6 +70,7 @@ public class Config {
 
             });
         });
+        */
     }
 
     private void loadInventory(ArrayList inventory) {

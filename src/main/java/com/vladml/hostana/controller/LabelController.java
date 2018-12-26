@@ -1,15 +1,14 @@
-package com.vladml.hostana.labels;
+package com.vladml.hostana.controller;
 
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.vladml.hostana.repository.LabelRepository;
+import com.vladml.hostana.model.Label;
 import jdk.nashorn.internal.runtime.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -29,20 +28,19 @@ public class LabelController {
     }
 
 
-
-
     @PostMapping("/label")
     public ResponseEntity<?> labelPost(@RequestParam Map<String, String> body) {
         try {
-            Label label = new Label();
-            label.setName(body.get("name"));
-            label.setColor(body.get("color"));
-            labelRepository.save(label);
+            labelRepository.save(Label.builder()
+                    .name(body.get("name"))
+                    .color(body.get("color"))
+                    .build());
             return new ResponseEntity(HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
     }
+
 
     @DeleteMapping("/label/{id}")
     public ResponseEntity labelDelete(@PathVariable("id") long id) {

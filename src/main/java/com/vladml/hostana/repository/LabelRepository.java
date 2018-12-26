@@ -1,6 +1,7 @@
-package com.vladml.hostana.labels;
+package com.vladml.hostana.repository;
 
 
+import com.vladml.hostana.model.Label;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

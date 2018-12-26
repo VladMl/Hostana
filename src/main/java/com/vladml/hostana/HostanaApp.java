@@ -1,6 +1,6 @@
 package com.vladml.hostana;
 
-import com.vladml.hostana.host.HostRepository;
+import com.vladml.hostana.repository.HostRepository;
 import com.vladml.hostana.util.Config;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

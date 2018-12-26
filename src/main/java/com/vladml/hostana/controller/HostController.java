@@ -1,9 +1,13 @@
-package com.vladml.hostana.host;
+package com.vladml.hostana.controller;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.vladml.hostana.labels.Label;
-import com.vladml.hostana.labels.LabelRepository;
+import com.vladml.hostana.model.Label;
+import com.vladml.hostana.model.dto.HostMapper;
+import com.vladml.hostana.repository.LabelRepository;
+import com.vladml.hostana.model.Host;
+import com.vladml.hostana.model.dto.HostDto;
+import com.vladml.hostana.repository.HostRepository;
 import com.vladml.hostana.util.Config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -91,8 +95,8 @@ public class HostController {
 
             values.putAll(host.getFieldMap());
 
-            host.setUpdateStatus(values.get("updateStatus"));
 
+            host.setUpdateStatus(values.get("updateStatus"));
 
             host.setLastUpdate(new SimpleDateFormat("dd.MM.YYYY HH.mm.ss").format(new Date()));
             host.setUpdateLogUrl(values.get("updateLogUrl"));
@@ -119,11 +123,12 @@ public class HostController {
                 label = labelRepository.findById(Long.parseLong(body.get("label")))
                         .orElse(null);
 
-
+/*
             host.setHardware(body.get("hardware"));
             host.setOs(body.get("os"));
             host.setDescription(body.get("description"));
-            host.setlabel(label);
+            host.setLabel(label);
+            */
             hostRepository.save(host);
             return new ResponseEntity(HttpStatus.OK);
         }

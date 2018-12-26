@@ -1,7 +1,9 @@
-package com.vladml.hostana.host;
+package com.vladml.hostana.model.dto;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.vladml.hostana.model.Host;
+import com.vladml.hostana.model.dto.HostDto;
 import com.vladml.hostana.util.Config;
 import org.apache.commons.lang3.StringUtils;
 import org.modelmapper.ModelMapper;
